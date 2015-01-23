@@ -5,6 +5,7 @@ The [Neo4j](http://neo4j.com) ABAP Connector
  
 ## Required Packages
 [zJSON The ABAP JSON Document class](https://github.com/se38/zJSON) Version 2.28 or higher
+Netweaver ABAP Stack 7.40 SP8 or higher
  
 ## Installation Neo4a
 import Nugget with [SAPlink](http://www.saplink.org)
