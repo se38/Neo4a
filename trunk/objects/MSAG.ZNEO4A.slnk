@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MSAG ARBGB="ZNEO4A" MASTERLANG="E" RESPUSER="SE38_UWE" STEXT="Neo4a messages">
+ <t100 SPRSL="E" ARBGB="ZNEO4A" MSGNR="001" TEXT="Couldn&apos;t create HTTP Client"/>
+ <t100 SPRSL="E" ARBGB="ZNEO4A" MSGNR="002" TEXT="Communication failure (send/receive)"/>
+ <t100 SPRSL="E" ARBGB="ZNEO4A" MSGNR="003" TEXT="&amp; &amp;: &amp;"/>
+ <t100 SPRSL="E" ARBGB="ZNEO4A" MSGNR="004" TEXT="Node ID missing"/>
+ <t100 SPRSL="E" ARBGB="ZNEO4A" MSGNR="005" TEXT="JSON parsing error: &amp;"/>
+ <t100t SPRSL="E" ARBGB="ZNEO4A" STEXT="Neo4a messages"/>
+</MSAG>

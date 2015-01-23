@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CLAS CLSNAME="ZCL_NEO4A_RELATIONSHIP" VERSION="1" LANGU="E" DESCRIPT="Neo4a Relationship" CATEGORY="00" EXPOSURE="0" STATE="1" RELEASE="0" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" CLSBCCAT="00" WITH_UNIT_TESTS="X" DURATION_TYPE="0 " RISK_LEVEL="0 ">
+ <types CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="TY_RELATIONSHIP" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="1 " TYPTYPE="4" SRCROW1="3 " SRCCOLUMN1="11 " SRCROW2="7 " SRCCOLUMN2="32 " TYPESRC_LENG="201 " TYPESRC='BEGIN OF ty_relationship,
+             to   TYPE string,          &quot;URI to node
+             type TYPE string,
+             data TYPE string,          &quot;properties
+           END OF ty_relationship
+'/>
+ <friends CLSNAME="ZCL_NEO4A_RELATIONSHIP" REFCLSNAME="ZCL_NEO4A" FRIENDTYPE="0" VERSION="1" STATE="1"/>
+ <friends CLSNAME="ZCL_NEO4A_RELATIONSHIP" REFCLSNAME="ZCL_NEO4A_NODE" FRIENDTYPE="0" VERSION="1" STATE="1"/>
+ <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+ <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+ <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+ <localTestClasses>*&quot;* use this source file for your ABAP unit test classes</localTestClasses>
+ <attribute CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="ID" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="3 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="I" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="NODE" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="1 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZCL_NEO4A_NODE" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="PROPERTIES" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="6 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="STRING" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="SELF" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="4 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="STRING" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="TO_NODE" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="2 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZCL_NEO4A_NODE" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="TYPE" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="5 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="STRING" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <method CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="5 " DISPID="0 " MTDTYPE="2" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="CONSTRUCTOR" SCONAME="I_NODE" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="2" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_NEO4A_NODE"/>
+  <source>METHOD constructor.
+
+    me-&gt;node = i_node.
+
+  ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="COPYRIGHT" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="1" BCMTDCAT="00" BCMTDSYN="0">
+  <source>METHOD copyright.
+
+    DATA(copyright) = VALUE string_table(
+
+( |*--------------------------------------------------------------------*| )
+( |*| )
+( |* Neo4a, the Neo4j ABAP Connector| )
+( |* Copyright (C) 2015 Uwe Fetzer| )
+( |*| )
+( |* Project home: https://github.com/se38/Neo4a| )
+( |*| )
+( |* Published under Apache License, Version 2.0| )
+( |* http://www.apache.org/licenses/LICENSE-2.0.html| )
+( |*| )
+( |*--------------------------------------------------------------------*| )
+).
+
+    cl_demo_output=&gt;display( copyright ).
+
+  ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="CREATE" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="1 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="CREATE" SCONAME="I_NODE" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_NEO4A_NODE"/>
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="CREATE" SCONAME="I_TYPE" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="STRING"/>
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="CREATE" SCONAME="I_TO_NODE" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_NEO4A_NODE"/>
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="CREATE" SCONAME="I_PROPERTIES" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="4 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="DATA" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="CREATE" SCONAME="R_RELATIONSHIP" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="5 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_NEO4A_RELATIONSHIP"/>
+  <exception CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="CREATE" SCONAME="ZCX_NEO4A" VERSION="1" LANGU="E" MTDTYPE="0" EDITORDER="1 "/>
+  <source>METHOD create.
+
+    &quot;http://neo4j.com/docs/stable/rest-api-relationships.html#rest-api-create-relationship
+    &quot;http://neo4j.com/docs/stable/rest-api-relationships.html#rest-api-create-a-relationship-with-properties
+
+    &quot;*--- create the body ---*
+    DATA(relationship_data) = VALUE wdr_simple_name_value_list(
+      ( name = &apos;to&apos;   value = i_to_node-&gt;get_self( ) )
+      ( name = &apos;type&apos; value = i_type )
+    ).
+
+    &quot;*--- if properties are filled, append a line ---*
+    IF i_properties IS NOT INITIAL.
+      relationship_data = VALUE #( BASE relationship_data
+          ( name = &apos;data&apos; value = zcl_json_document=&gt;create_with_data( i_properties )-&gt;get_json( ) )
+      ).
+    ENDIF.
+
+    DATA(json_doc) = zcl_json_document=&gt;create( ).
+    json_doc-&gt;set_name_value_pairs( relationship_data ).
+    DATA(body) = json_doc-&gt;get_json( ).
+
+    i_node-&gt;neo4a-&gt;post(
+      EXPORTING
+        i_uri      = |node/{ i_node-&gt;id }/relationships|
+        i_body     = body
+      IMPORTING
+        e_response = DATA(response)
+        e_code     = DATA(code)
+        e_reason   = DATA(reason)
+    ).
+
+    IF code &lt;&gt; 201.        &quot;CREATED
+      DATA(message) = zcl_json_document=&gt;create_with_json( response )-&gt;get_value( &apos;message&apos; ).
+      RAISE EXCEPTION TYPE zcx_neo4a
+        EXPORTING
+          textid  = zcx_neo4a=&gt;unexpected_http_code
+          code    = code
+          reason  = reason
+          message = message.
+    ENDIF.
+
+    &quot;*--- return the created relationship ---*
+    DATA(rs_json_doc) = zcl_json_document=&gt;create_with_json( response ).
+    DATA(self) = rs_json_doc-&gt;get_value( &apos;self&apos; ).
+
+    DATA(metadata_json_doc) = zcl_json_document=&gt;create_with_json(
+                                 rs_json_doc-&gt;get_value( &apos;metadata&apos; ) ).
+
+    DATA(id) = CONV i( metadata_json_doc-&gt;get_value( &apos;id&apos; ) ).
+
+    r_relationship = zcl_neo4a_relationship=&gt;create_object(
+                     i_node            = i_node
+                     i_id              = id
+                     i_self            = self
+                     i_type            = i_type
+                     i_to_node         = i_to_node
+                     i_properties      = i_properties
+                 ).
+
+  ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="CREATE_OBJECT" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="2 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="CREATE_OBJECT" SCONAME="I_NODE" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_NEO4A_NODE"/>
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="CREATE_OBJECT" SCONAME="I_ID" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="I"/>
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="CREATE_OBJECT" SCONAME="I_SELF" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="STRING"/>
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="CREATE_OBJECT" SCONAME="I_TYPE" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="4 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="STRING"/>
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="CREATE_OBJECT" SCONAME="I_TO_NODE" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="5 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_NEO4A_NODE"/>
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="CREATE_OBJECT" SCONAME="I_PROPERTIES" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="6 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="DATA" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="CREATE_OBJECT" SCONAME="I_PROPERTIES_JSON" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="7 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="STRING" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="CREATE_OBJECT" SCONAME="R_RELATIONSHIP" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="8 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_NEO4A_RELATIONSHIP"/>
+  <exception CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="CREATE_OBJECT" SCONAME="ZCX_NEO4A" VERSION="1" LANGU="E" MTDTYPE="0" EDITORDER="1 "/>
+  <source>METHOD create_object.
+
+    r_relationship = NEW zcl_neo4a_relationship( i_node ).
+    r_relationship-&gt;id = i_id.
+    r_relationship-&gt;self = i_self.
+    r_relationship-&gt;type = i_type.
+    r_relationship-&gt;to_node = i_to_node.
+
+    IF i_properties IS NOT INITIAL.
+      r_relationship-&gt;properties = zcl_json_document=&gt;create_with_data( i_properties )-&gt;get_json( ).
+    ELSEIF i_properties_json IS NOT INITIAL.
+      r_relationship-&gt;properties = i_properties_json.
+    ENDIF.
+
+  ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="DELETE" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="3 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="DELETE" SCONAME="I_NEO4A" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_NEO4A"/>
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="DELETE" SCONAME="I_ID" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="I"/>
+  <exception CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="DELETE" SCONAME="ZCX_NEO4A" VERSION="1" LANGU="E" MTDTYPE="0" EDITORDER="1 "/>
+  <source>METHOD delete.
+
+    &quot;http://neo4j.com/docs/stable/rest-api-relationships.html#rest-api-delete-relationship
+
+    i_neo4a-&gt;delete(
+      EXPORTING
+        i_uri      = |relationship/{ i_id }|
+      IMPORTING
+        e_response = DATA(response)
+        e_code     = DATA(code)
+        e_reason   = DATA(reason)
+    ).
+
+    IF code &lt;&gt; 204.        &quot;No Content
+      DATA(message) = zcl_json_document=&gt;create_with_json( response )-&gt;get_value( &apos;message&apos; ).
+      RAISE EXCEPTION TYPE zcx_neo4a
+        EXPORTING
+          textid  = zcx_neo4a=&gt;unexpected_http_code
+          code    = code
+          reason  = reason
+          message = message.
+    ENDIF.
+
+  ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_ID" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_ID" SCONAME="R_ID" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="I"/>
+  <source>METHOD get_id.
+
+    r_id = me-&gt;id.
+
+  ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_PROPERTIES" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="7 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" MTDNEWEXC="X" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_PROPERTIES" SCONAME="I_READ_DB" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="BOOLEAN" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_PROPERTIES" SCONAME="E_PROPERTIES" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " PARDECLTYP="1" PARPASSTYP="1" TYPTYPE="1" TYPE="DATA"/>
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_PROPERTIES" SCONAME="E_PROPERTIES_JSON" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " PARDECLTYP="1" PARPASSTYP="1" TYPTYPE="1" TYPE="STRING"/>
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_PROPERTIES" SCONAME="E_PROPERTIES_TABLE" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="4 " DISPID="0 " PARDECLTYP="1" PARPASSTYP="1" TYPTYPE="1" TYPE="WDR_SIMPLE_NAME_VALUE_LIST"/>
+  <exception CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_PROPERTIES" SCONAME="ZCX_NEO4A" VERSION="1" LANGU="E" MTDTYPE="0" EDITORDER="1 "/>
+  <source>METHOD get_properties.
+
+    &quot;http://neo4j.com/docs/stable/rest-api-relationships.html#rest-api-get-all-properties-on-a-relationship
+
+    IF i_read_db IS NOT INITIAL.
+
+      node-&gt;neo4a-&gt;get(
+        EXPORTING
+          i_uri      = |relationship/{ me-&gt;id }/properties|
+        IMPORTING
+          e_response = DATA(response)
+          e_code     = DATA(code)
+          e_reason   = DATA(reason)
+      ).
+
+      IF code &lt;&gt; 200.        &quot;&lt;&gt; ok
+        DATA(message) = zcl_json_document=&gt;create_with_json( response )-&gt;get_value( &apos;message&apos; ).
+        RAISE EXCEPTION TYPE zcx_neo4a
+          EXPORTING
+            textid  = zcx_neo4a=&gt;unexpected_http_code
+            code    = code
+            reason  = reason
+            message = message.
+      ENDIF.
+
+      me-&gt;properties = response.
+
+    ENDIF.
+
+    &quot;*--- properties as data ---*
+    IF e_properties IS REQUESTED.
+      TRY.
+          zcl_json_document=&gt;create_with_json( me-&gt;properties
+            )-&gt;get_data( IMPORTING data = e_properties ).
+        CATCH zcx_json_document INTO DATA(json_error).
+          RAISE EXCEPTION TYPE zcx_neo4a
+            EXPORTING
+              textid  = zcx_neo4a=&gt;json_parsing_error
+              message = json_error-&gt;get_text( ).
+      ENDTRY.
+    ENDIF.
+
+    &quot;*--- properties as JSON ---*
+    IF e_properties_json IS REQUESTED.
+      e_properties_json = me-&gt;properties.
+    ENDIF.
+
+    &quot;*--- properties as name/value pairs ---*
+    IF e_properties_table IS REQUESTED.
+      TRY.
+          zcl_json_document=&gt;create(
+            )-&gt;get_name_value_pairs(
+            EXPORTING
+              json        = me-&gt;properties
+            IMPORTING
+              name_values = e_properties_table
+          ).
+        CATCH zcx_json_document INTO json_error.
+          RAISE EXCEPTION TYPE zcx_neo4a
+            EXPORTING
+              textid  = zcx_neo4a=&gt;json_parsing_error
+              message = json_error-&gt;get_text( ).
+      ENDTRY.
+    ENDIF.
+
+  ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_PROPERTY" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="6 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" MTDNEWEXC="X" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_PROPERTY" SCONAME="I_READ_DB" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="BOOLEAN" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_PROPERTY" SCONAME="I_NAME" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="STRING"/>
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_PROPERTY" SCONAME="R_VALUE" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="STRING"/>
+  <exception CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_PROPERTY" SCONAME="ZCX_NEO4A" VERSION="1" LANGU="E" MTDTYPE="0" EDITORDER="1 "/>
+  <source>METHOD get_property.
+
+    &quot;http://neo4j.com/docs/stable/rest-api-relationships.html#rest-api-get-single-property-on-a-relationship
+    IF i_read_db IS NOT INITIAL.
+
+      node-&gt;neo4a-&gt;get(
+        EXPORTING
+          i_uri      = |node/{ me-&gt;id }/properties/{ i_name }|
+        IMPORTING
+          e_response = DATA(response)
+          e_code     = DATA(code)
+          e_reason   = DATA(reason)
+      ).
+
+      IF code &lt;&gt; 200.        &quot;&lt;&gt; ok
+        DATA(message) = zcl_json_document=&gt;create_with_json( response )-&gt;get_value( &apos;message&apos; ).
+        RAISE EXCEPTION TYPE zcx_neo4a
+          EXPORTING
+            textid  = zcx_neo4a=&gt;unexpected_http_code
+            code    = code
+            reason  = reason
+            message = message.
+      ENDIF.
+
+      r_value = response.
+
+    ELSE.
+
+      r_value = zcl_json_document=&gt;create_with_json( me-&gt;properties )-&gt;get_value( i_name ).
+
+    ENDIF.
+
+  ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_RELATIONSHIP_BY_ID" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="4 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_RELATIONSHIP_BY_ID" SCONAME="I_NEO4A" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_NEO4A"/>
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_RELATIONSHIP_BY_ID" SCONAME="I_ID" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="I"/>
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_RELATIONSHIP_BY_ID" SCONAME="R_RELATIONSHIP" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_NEO4A_RELATIONSHIP"/>
+  <exception CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_RELATIONSHIP_BY_ID" SCONAME="ZCX_NEO4A" VERSION="1" LANGU="E" MTDTYPE="0" EDITORDER="1 "/>
+  <source>METHOD get_relationship_by_id.
+
+    &quot;http://neo4j.com/docs/stable/rest-api-relationships.html#rest-api-get-relationship-by-id
+
+    i_neo4a-&gt;get(
+      EXPORTING
+        i_uri      = |relationship/{ i_id }|
+      IMPORTING
+        e_response = DATA(response)
+        e_code     = DATA(code)
+        e_reason   = DATA(reason)
+    ).
+
+    IF code &lt;&gt; 200.        &quot;OK
+      DATA(message) = zcl_json_document=&gt;create_with_json( response )-&gt;get_value( &apos;message&apos; ).
+      RAISE EXCEPTION TYPE zcx_neo4a
+        EXPORTING
+          textid  = zcx_neo4a=&gt;unexpected_http_code
+          code    = code
+          reason  = reason
+          message = message.
+    ENDIF.
+
+    DATA(json_doc) = zcl_json_document=&gt;create_with_json( response ).
+
+    &quot;*--- get starting node (ID is the last part of the self URI) ---*
+    DATA token TYPE string_table.
+    DATA(start_node_self) = json_doc-&gt;get_value( &apos;start&apos; ).
+    SPLIT start_node_self AT &apos;/&apos; INTO TABLE token.
+    DATA(start_node) = i_neo4a-&gt;get_node( CONV #( token[ lines( token ) ] ) ).
+
+    &quot;*--- get ending node (ID is the last part of the self URI) ---*
+    DATA(end_node_self) = json_doc-&gt;get_value( &apos;end&apos; ).
+    SPLIT end_node_self AT &apos;/&apos; INTO TABLE token.
+    DATA(end_node) = i_neo4a-&gt;get_node( CONV #( token[ lines( token ) ] ) ).
+
+    DATA(metadata_json_doc) = zcl_json_document=&gt;create_with_json( json_doc-&gt;get_value( &apos;metadata&apos; ) ).
+
+    &quot;*--- return the relationship object ---*
+    r_relationship = NEW zcl_neo4a_relationship( start_node ).
+    r_relationship-&gt;id = metadata_json_doc-&gt;get_value( &apos;id&apos; ).
+    r_relationship-&gt;self = json_doc-&gt;get_value( &apos;self&apos; ).
+    r_relationship-&gt;type = json_doc-&gt;get_value( &apos;type&apos; ).
+    r_relationship-&gt;to_node = end_node.
+    r_relationship-&gt;properties = json_doc-&gt;get_value( &apos;data&apos; ).
+
+  ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_RELATIONSHIP_TYPES" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_RELATIONSHIP_TYPES" SCONAME="I_NEO4A" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_NEO4A"/>
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_RELATIONSHIP_TYPES" SCONAME="E_TYPES" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " PARDECLTYP="1" PARPASSTYP="1" TYPTYPE="1" TYPE="STRING_TABLE"/>
+  <exception CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_RELATIONSHIP_TYPES" SCONAME="ZCX_NEO4A" VERSION="1" LANGU="E" MTDTYPE="0" EDITORDER="1 "/>
+  <source>METHOD get_relationship_types.
+
+    i_neo4a-&gt;get(
+      EXPORTING
+        i_uri      = |relationship/types|
+      IMPORTING
+        e_response = DATA(response)
+        e_code     = DATA(code)
+        e_reason   = DATA(reason)
+    ).
+
+    IF code &lt;&gt; 200.        &quot;&lt;&gt; ok
+      DATA(message) = zcl_json_document=&gt;create_with_json( response )-&gt;get_value( &apos;message&apos; ).
+      RAISE EXCEPTION TYPE zcx_neo4a
+        EXPORTING
+          textid  = zcx_neo4a=&gt;unexpected_http_code
+          code    = code
+          reason  = reason
+          message = message.
+    ENDIF.
+
+    TRY.
+        zcl_json_document=&gt;create_with_json( response )-&gt;get_data( IMPORTING data = e_types ).
+      CATCH zcx_json_document INTO DATA(json_error).
+        RAISE EXCEPTION TYPE zcx_neo4a
+          EXPORTING
+            textid  = zcx_neo4a=&gt;json_parsing_error
+            message = json_error-&gt;get_text( ).
+    ENDTRY.
+
+  ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_SELF" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_SELF" SCONAME="R_SELF" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="STRING"/>
+  <source>METHOD get_self.
+
+    r_self = me-&gt;self.
+
+  ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_TYPE" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="5 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="GET_TYPE" SCONAME="R_TYPE" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="STRING"/>
+  <source>METHOD get_type.
+
+    r_type = me-&gt;type.
+
+  ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="SET_PROPERTIES" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="9 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" MTDNEWEXC="X" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="SET_PROPERTIES" SCONAME="I_PROPERTIES" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="DATA"/>
+  <exception CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="SET_PROPERTIES" SCONAME="ZCX_NEO4A" VERSION="1" LANGU="E" MTDTYPE="0" EDITORDER="1 "/>
+  <source>METHOD set_properties.
+
+    &quot;http://neo4j.com/docs/stable/rest-api-relationships.html#rest-api-set-all-properties-on-a-relationship
+
+    DATA(body) = zcl_json_document=&gt;create_with_data( i_properties )-&gt;get_json( ).
+
+    node-&gt;neo4a-&gt;put(
+      EXPORTING
+        i_uri      = |relationship/{ me-&gt;id }/properties|
+        i_body     = body
+      IMPORTING
+        e_response = DATA(response)
+        e_code     = DATA(code)
+        e_reason   = DATA(reason)
+    ).
+
+    IF code &lt;&gt; 204.        &quot;&lt;&gt; No Content
+      DATA(message) = zcl_json_document=&gt;create_with_json( response )-&gt;get_value( &apos;message&apos; ).
+      RAISE EXCEPTION TYPE zcx_neo4a
+        EXPORTING
+          textid  = zcx_neo4a=&gt;unexpected_http_code
+          code    = code
+          reason  = reason
+          message = message.
+    ENDIF.
+
+    &quot;*--- update the current node ---*
+    me-&gt;properties = body.
+
+  ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="SET_PROPERTY" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="8 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" MTDNEWEXC="X" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="SET_PROPERTY" SCONAME="I_NAME" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="STRING"/>
+  <parameter CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="SET_PROPERTY" SCONAME="I_VALUE" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="STRING"/>
+  <exception CLSNAME="ZCL_NEO4A_RELATIONSHIP" CMPNAME="SET_PROPERTY" SCONAME="ZCX_NEO4A" VERSION="1" LANGU="E" MTDTYPE="0" EDITORDER="1 "/>
+  <source>METHOD set_property.
+
+    &quot;http://neo4j.com/docs/stable/rest-api-relationships.html#rest-api-set-single-property-on-a-relationship
+
+    node-&gt;neo4a-&gt;put(
+      EXPORTING
+        i_uri      = |node/{ me-&gt;id }/properties/{ i_name }|
+        i_body     = |&quot;{ i_value }&quot;|
+      IMPORTING
+        e_response   = DATA(response)
+        e_code     = DATA(code)
+        e_reason   = DATA(reason)
+    ).
+
+    IF code &lt;&gt; 204.        &quot;&lt;&gt; No Content
+      DATA(message) = zcl_json_document=&gt;create_with_json( response )-&gt;get_value( &apos;message&apos; ).
+      RAISE EXCEPTION TYPE zcx_neo4a
+        EXPORTING
+          textid  = zcx_neo4a=&gt;unexpected_http_code
+          code    = code
+          reason  = reason
+          message = message.
+    ENDIF.
+
+    me-&gt;get_properties(     &quot;re-read the properties from DB
+      EXPORTING
+        i_read_db    = abap_true
+    ).
+
+  ENDMETHOD.</source>
+ </method>
+</CLAS>

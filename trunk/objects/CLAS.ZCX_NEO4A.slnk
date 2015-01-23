@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CLAS CLSNAME="ZCX_NEO4A" VERSION="1" LANGU="E" DESCRIPT="Neo4a Exceptions" CATEGORY="40" EXPOSURE="2" STATE="1" RELEASE="0" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" CLSBCCAT="00" WITH_UNIT_TESTS="X" DURATION_TYPE="0 " RISK_LEVEL="0 " REFCLSNAME="CX_STATIC_CHECK">
+ <implementing CLSNAME="ZCX_NEO4A" REFCLSNAME="IF_T100_MESSAGE" VERSION="1" EXPOSURE="2" STATE="1" RELTYPE="1" EDITORDER="1 "/>
+ <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+ <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+ <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+ <localTestClasses>*&quot;* use this source file for your ABAP unit test classes</localTestClasses>
+ <attribute CLSNAME="ZCX_NEO4A" CMPNAME="CODE" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="6 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="I" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCX_NEO4A" CMPNAME="COMMUNICATION_FAILURE" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="2 " ATTDECLTYP="2" ATTEXPVIRT="0" TYPTYPE="4" SRCROW1="23 " SRCCOLUMN1="6 " SRCROW2="30 " SRCCOLUMN2="33 " LOCKED="X" TYPESRC_LENG="326 " TYPESRC="BEGIN OF communication_failure,
+        msgid TYPE symsgid VALUE &apos;ZNEO4A&apos;,
+        msgno TYPE symsgno VALUE &apos;002&apos;,
+        attr1 TYPE scx_attrname VALUE &apos;&apos;,
+        attr2 TYPE scx_attrname VALUE &apos;&apos;,
+        attr3 TYPE scx_attrname VALUE &apos;&apos;,
+        attr4 TYPE scx_attrname VALUE &apos;&apos;,
+      END OF communication_failure
+"/>
+ <attribute CLSNAME="ZCX_NEO4A" CMPNAME="CONNECTION_ERROR" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="1 " ATTDECLTYP="2" ATTEXPVIRT="0" TYPTYPE="4" SRCROW1="14 " SRCCOLUMN1="6 " SRCROW2="21 " SRCCOLUMN2="28 " LOCKED="X" TYPESRC_LENG="316 " TYPESRC="BEGIN OF connection_error,
+        msgid TYPE symsgid VALUE &apos;ZNEO4A&apos;,
+        msgno TYPE symsgno VALUE &apos;001&apos;,
+        attr1 TYPE scx_attrname VALUE &apos;&apos;,
+        attr2 TYPE scx_attrname VALUE &apos;&apos;,
+        attr3 TYPE scx_attrname VALUE &apos;&apos;,
+        attr4 TYPE scx_attrname VALUE &apos;&apos;,
+      END OF connection_error
+"/>
+ <attribute CLSNAME="ZCX_NEO4A" CMPNAME="JSON_PARSING_ERROR" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="5 " ATTDECLTYP="2" ATTEXPVIRT="0" TYPTYPE="4" SRCROW1="50 " SRCCOLUMN1="6 " SRCROW2="57 " SRCCOLUMN2="30 " LOCKED="X" TYPESRC_LENG="327 " TYPESRC="BEGIN OF json_parsing_error,
+        msgid TYPE symsgid VALUE &apos;ZNEO4A&apos;,
+        msgno TYPE symsgno VALUE &apos;005&apos;,
+        attr1 TYPE scx_attrname VALUE &apos;MESSAGE&apos;,
+        attr2 TYPE scx_attrname VALUE &apos;&apos;,
+        attr3 TYPE scx_attrname VALUE &apos;&apos;,
+        attr4 TYPE scx_attrname VALUE &apos;&apos;,
+      END OF json_parsing_error
+"/>
+ <attribute CLSNAME="ZCX_NEO4A" CMPNAME="MESSAGE" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="8 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="STRING" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCX_NEO4A" CMPNAME="NODE_ID_MISSING" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="4 " ATTDECLTYP="2" ATTEXPVIRT="0" TYPTYPE="4" SRCROW1="41 " SRCCOLUMN1="6 " SRCROW2="48 " SRCCOLUMN2="27 " LOCKED="X" TYPESRC_LENG="314 " TYPESRC="BEGIN OF node_id_missing,
+        msgid TYPE symsgid VALUE &apos;ZNEO4A&apos;,
+        msgno TYPE symsgno VALUE &apos;004&apos;,
+        attr1 TYPE scx_attrname VALUE &apos;&apos;,
+        attr2 TYPE scx_attrname VALUE &apos;&apos;,
+        attr3 TYPE scx_attrname VALUE &apos;&apos;,
+        attr4 TYPE scx_attrname VALUE &apos;&apos;,
+      END OF node_id_missing
+"/>
+ <attribute CLSNAME="ZCX_NEO4A" CMPNAME="REASON" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="7 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="STRING" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCX_NEO4A" CMPNAME="UNEXPECTED_HTTP_CODE" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="3 " ATTDECLTYP="2" ATTEXPVIRT="0" TYPTYPE="4" SRCROW1="32 " SRCCOLUMN1="6 " SRCROW2="39 " SRCCOLUMN2="32 " LOCKED="X" TYPESRC_LENG="341 " TYPESRC="BEGIN OF unexpected_http_code,
+        msgid TYPE symsgid VALUE &apos;ZNEO4A&apos;,
+        msgno TYPE symsgno VALUE &apos;003&apos;,
+        attr1 TYPE scx_attrname VALUE &apos;CODE&apos;,
+        attr2 TYPE scx_attrname VALUE &apos;REASON&apos;,
+        attr3 TYPE scx_attrname VALUE &apos;MESSAGE&apos;,
+        attr4 TYPE scx_attrname VALUE &apos;&apos;,
+      END OF unexpected_http_code
+"/>
+ <inheritance CLSNAME="ZCX_NEO4A" REFCLSNAME="CX_STATIC_CHECK" VERSION="1" STATE="1"/>
+ <method CLSNAME="ZCX_NEO4A" CMPNAME="COPYRIGHT" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="1" BCMTDCAT="00" BCMTDSYN="0">
+  <source>METHOD copyright.
+
+    DATA(copyright) = VALUE string_table(
+
+( |*--------------------------------------------------------------------*| )
+( |*| )
+( |* Neo4a, the Neo4j ABAP Connector| )
+( |* Copyright (C) 2015 Uwe Fetzer| )
+( |*| )
+( |* Project home: https://github.com/se38/Neo4a| )
+( |*| )
+( |* Published under Apache License, Version 2.0| )
+( |* http://www.apache.org/licenses/LICENSE-2.0.html| )
+( |*| )
+( |*--------------------------------------------------------------------*| )
+).
+
+    cl_demo_output=&gt;display( copyright ).
+
+  ENDMETHOD.</source>
+ </method>
+</CLAS>
