@@ -1,5 +1,6 @@
 # Neo4a
 The [Neo4j](http://neo4j.com) ABAP Connector
+
 See [Blog post on SAP Community Network](http://scn.sap.com/community/developer-center/cross-technology/blog/2015/01/23/neo4a-the-neo4j-abap-connector)
  
 * Nugget: ZNEO4A-x.x.nugg
