@@ -1,5 +1,5 @@
 # Neo4a
-The Neo4j ABAP Connector
+The [Neo4j](http://neo4j.com) ABAP Connector
  
 * Nugget: ZNEO4A-x.x.nugg
  
