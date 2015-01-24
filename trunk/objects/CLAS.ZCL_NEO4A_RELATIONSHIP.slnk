@@ -328,15 +328,14 @@
     DATA(json_doc) = zcl_json_document=&gt;create_with_json( response ).
 
     &quot;*--- get starting node (ID is the last part of the self URI) ---*
-    DATA token TYPE string_table.
     DATA(start_node_self) = json_doc-&gt;get_value( &apos;start&apos; ).
-    SPLIT start_node_self AT &apos;/&apos; INTO TABLE token.
-    DATA(start_node) = i_neo4a-&gt;get_node( CONV #( token[ lines( token ) ] ) ).
+    FIND REGEX &apos;/node/([0-9]*)$&apos; IN start_node_self SUBMATCHES DATA(node_id).
+    DATA(start_node) = i_neo4a-&gt;get_node( CONV #( node_id ) ).
 
     &quot;*--- get ending node (ID is the last part of the self URI) ---*
     DATA(end_node_self) = json_doc-&gt;get_value( &apos;end&apos; ).
-    SPLIT end_node_self AT &apos;/&apos; INTO TABLE token.
-    DATA(end_node) = i_neo4a-&gt;get_node( CONV #( token[ lines( token ) ] ) ).
+    FIND REGEX &apos;/node/([0-9]*)$&apos; IN end_node_self SUBMATCHES node_id.
+    DATA(end_node) = i_neo4a-&gt;get_node( CONV #( node_id ) ).
 
     DATA(metadata_json_doc) = zcl_json_document=&gt;create_with_json( json_doc-&gt;get_value( &apos;metadata&apos; ) ).
 

@@ -114,7 +114,8 @@
  <method CLSNAME="ZCL_NEO4A_NODE" CMPNAME="CREATE" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="1 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" BCMTDCAT="00" BCMTDSYN="0">
   <parameter CLSNAME="ZCL_NEO4A_NODE" CMPNAME="CREATE" SCONAME="I_NEO4A" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_NEO4A"/>
   <parameter CLSNAME="ZCL_NEO4A_NODE" CMPNAME="CREATE" SCONAME="I_PROPERTIES" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="DATA" PAROPTIONL="X"/>
-  <parameter CLSNAME="ZCL_NEO4A_NODE" CMPNAME="CREATE" SCONAME="R_NODE" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_NEO4A_NODE"/>
+  <parameter CLSNAME="ZCL_NEO4A_NODE" CMPNAME="CREATE" SCONAME="I_LABEL" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="STRING" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_NEO4A_NODE" CMPNAME="CREATE" SCONAME="R_NODE" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="4 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_NEO4A_NODE"/>
   <exception CLSNAME="ZCL_NEO4A_NODE" CMPNAME="CREATE" SCONAME="ZCX_NEO4A" VERSION="1" LANGU="E" MTDTYPE="0" EDITORDER="1 "/>
   <source>METHOD create.
 
@@ -173,6 +174,11 @@
                i_labels          = labels
                i_properties_json = node_json_doc-&gt;get_value( &apos;data&apos; )
            ).
+
+    &quot;*--- add the label ---*
+    IF i_label IS NOT INITIAL.
+      r_node-&gt;add_label( i_label ).
+    ENDIF.
 
   ENDMETHOD.</source>
  </method>
@@ -622,8 +628,6 @@
     DATA(json_doc) = zcl_json_document=&gt;create_with_json( response ).
 
     &quot;*--- for each found node ---*
-    DATA token TYPE string_table.
-
     WHILE json_doc-&gt;get_next( ) IS NOT INITIAL.
 
       DATA(rs_json_doc) = zcl_json_document=&gt;create_with_json( json_doc-&gt;get_json( ) ).
@@ -637,8 +641,8 @@
 
       &quot;*--- get ending node (ID is the last part of the self URI) ---*
       DATA(end_node_self) = rs_json_doc-&gt;get_value( &apos;end&apos; ).
-      SPLIT end_node_self AT &apos;/&apos; INTO TABLE token.
-      DATA(end_node) = neo4a-&gt;get_node( CONV #( token[ lines( token ) ] ) ).
+      FIND REGEX &apos;/node/([0-9]*)$&apos; IN end_node_self SUBMATCHES DATA(node_id).
+      DATA(end_node) = neo4a-&gt;get_node( CONV #( node_id ) ).
 
       DATA(relationship) = zcl_neo4a_relationship=&gt;create_object(
                          i_node            = me

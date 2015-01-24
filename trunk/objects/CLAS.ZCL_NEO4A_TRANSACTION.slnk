@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CLAS CLSNAME="ZCL_NEO4A_TRANSACTION" VERSION="1" LANGU="E" DESCRIPT="Neo4a: transaction handling" CATEGORY="00" EXPOSURE="0" STATE="1" RELEASE="0" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" CLSBCCAT="00" WITH_UNIT_TESTS="X" DURATION_TYPE="0 " RISK_LEVEL="0 ">
+ <friends CLSNAME="ZCL_NEO4A_TRANSACTION" REFCLSNAME="ZCL_NEO4A" FRIENDTYPE="0" VERSION="1" STATE="1"/>
+ <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+ <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+ <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+ <localTestClasses>*&quot;* use this source file for your ABAP unit test classes</localTestClasses>
+ <attribute CLSNAME="ZCL_NEO4A_TRANSACTION" CMPNAME="ID" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="2 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="I" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_NEO4A_TRANSACTION" CMPNAME="NEO4A" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="1 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZCL_NEO4A" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_NEO4A_TRANSACTION" CMPNAME="RESPONSE" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="3 " ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="STRING" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <method CLSNAME="ZCL_NEO4A_TRANSACTION" CMPNAME="COMMIT" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" MTDNEWEXC="X" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_NEO4A_TRANSACTION" CMPNAME="COMMIT" SCONAME="R_RESPONSE" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="STRING"/>
+  <exception CLSNAME="ZCL_NEO4A_TRANSACTION" CMPNAME="COMMIT" SCONAME="ZCX_NEO4A" VERSION="1" LANGU="E" MTDTYPE="0" EDITORDER="1 "/>
+  <source>METHOD commit.
+
+    &quot;http://neo4j.com/docs/stable/rest-api-transactional.html#rest-api-commit-an-open-transaction
+    r_response = me-&gt;send( i_commit = abap_true ).
+  ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_NEO4A_TRANSACTION" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" EXPOSURE="0" STATE="1" EDITORDER="1 " DISPID="0 " MTDTYPE="2" MTDDECLTYP="0" MTDNEWEXC="X" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_NEO4A_TRANSACTION" CMPNAME="CONSTRUCTOR" SCONAME="I_NEO4A" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="2" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_NEO4A"/>
+  <parameter CLSNAME="ZCL_NEO4A_TRANSACTION" CMPNAME="CONSTRUCTOR" SCONAME="I_STATEMENTS" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="2" EDITORDER="2 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="STRING_TABLE" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_NEO4A_TRANSACTION" CMPNAME="CONSTRUCTOR" SCONAME="I_COMMIT" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="2" EDITORDER="3 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="BOOLEAN" PAROPTIONL="X"/>
+  <exception CLSNAME="ZCL_NEO4A_TRANSACTION" CMPNAME="CONSTRUCTOR" SCONAME="ZCX_NEO4A" VERSION="1" LANGU="E" MTDTYPE="2" EDITORDER="1 "/>
+  <source>METHOD constructor.
+
+    &quot;http://neo4j.com/docs/stable/rest-api-transactional.html#rest-api-begin-a-transaction
+    me-&gt;neo4a = i_neo4a.
+
+    me-&gt;send(
+      EXPORTING
+        i_statements = i_statements
+        i_commit     = i_commit
+    ).
+
+  ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_NEO4A_TRANSACTION" CMPNAME="GET_ID" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_NEO4A_TRANSACTION" CMPNAME="GET_ID" SCONAME="R_ID" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="I"/>
+  <source>METHOD get_id.
+    r_id = me-&gt;id.
+  ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_NEO4A_TRANSACTION" CMPNAME="GET_RESPONSE" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_NEO4A_TRANSACTION" CMPNAME="GET_RESPONSE" SCONAME="R_RESPONSE" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="STRING"/>
+  <source>METHOD get_response.
+    r_response = me-&gt;response.
+  ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_NEO4A_TRANSACTION" CMPNAME="ROLLBACK" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="5 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" MTDNEWEXC="X" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_NEO4A_TRANSACTION" CMPNAME="ROLLBACK" SCONAME="R_RESPONSE" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="STRING"/>
+  <exception CLSNAME="ZCL_NEO4A_TRANSACTION" CMPNAME="ROLLBACK" SCONAME="ZCX_NEO4A" VERSION="1" LANGU="E" MTDTYPE="0" EDITORDER="1 "/>
+  <source>METHOD rollback.
+
+    &quot;http://neo4j.com/docs/stable/rest-api-transactional.html#rest-api-rollback-an-open-transaction
+
+    neo4a-&gt;delete(
+      EXPORTING
+        i_uri      = |transaction/{ me-&gt;id }|
+      IMPORTING
+        e_response = DATA(response)
+        e_code     = DATA(code)
+        e_reason   = DATA(reason)
+    ).
+
+    IF code &lt;&gt; 200.                                 &quot;&lt;&gt; ok
+      DATA(message) = zcl_json_document=&gt;create_with_json( response )-&gt;get_value( &apos;message&apos; ).
+      RAISE EXCEPTION TYPE zcx_neo4a
+        EXPORTING
+          textid  = zcx_neo4a=&gt;unexpected_http_code
+          code    = code
+          reason  = reason
+          message = message.
+    ENDIF.
+
+    r_response = me-&gt;response = response.
+
+  ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_NEO4A_TRANSACTION" CMPNAME="SEND" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" MTDNEWEXC="X" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_NEO4A_TRANSACTION" CMPNAME="SEND" SCONAME="I_STATEMENTS" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="STRING_TABLE" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_NEO4A_TRANSACTION" CMPNAME="SEND" SCONAME="I_COMMIT" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="BOOLEAN" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_NEO4A_TRANSACTION" CMPNAME="SEND" SCONAME="R_RESPONSE" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="STRING"/>
+  <exception CLSNAME="ZCL_NEO4A_TRANSACTION" CMPNAME="SEND" SCONAME="ZCX_NEO4A" VERSION="1" LANGU="E" MTDTYPE="0" EDITORDER="1 "/>
+  <source>METHOD send.
+
+    &quot;http://neo4j.com/docs/stable/rest-api-transactional.html#rest-api-execute-statements-in-an-open-transaction
+
+    IF i_statements IS NOT INITIAL.
+      DATA(body) = `{&quot;statements&quot; : [`.
+      LOOP AT i_statements ASSIGNING FIELD-SYMBOL(&lt;statement&gt;).
+
+        body = body &amp;&amp; `{ &quot;statement&quot; : &quot;` &amp;&amp; &lt;statement&gt; &amp;&amp; `&quot; }`.
+
+        IF sy-tabix &lt;&gt; lines( i_statements ).
+          body = body &amp;&amp; `,`.
+        ENDIF.
+      ENDLOOP.
+      body = body &amp;&amp; `]}`.
+    ENDIF.
+
+    &quot;*--- create UIRI with transaction ID and &apos;commit&apos; ---*
+    DATA(uri) = `transaction`.
+
+    IF me-&gt;id IS NOT INITIAL.
+      uri = |{ uri }/{ me-&gt;id }|.
+    ENDIF.
+
+    IF i_commit = abap_true.
+      uri = |{ uri }/commit|.
+    ENDIF.
+
+    neo4a-&gt;post(
+      EXPORTING
+        i_uri      = uri
+        i_body     = body
+      IMPORTING
+        e_response = DATA(response)
+        e_code     = DATA(code)
+        e_reason   = DATA(reason)
+    ).
+
+    IF code &lt;&gt; 200 AND code &lt;&gt; 201.        &quot;&lt;&gt; ok (open transaction) &lt;&gt; created (new transaction)
+      DATA(message) = zcl_json_document=&gt;create_with_json( response )-&gt;get_value( &apos;message&apos; ).
+      RAISE EXCEPTION TYPE zcx_neo4a
+        EXPORTING
+          textid  = zcx_neo4a=&gt;unexpected_http_code
+          code    = code
+          reason  = reason
+          message = message.
+    ENDIF.
+
+    r_response = me-&gt;response = response.
+
+    &quot;*--- get transaction number for open transaction ---*
+    IF i_commit IS INITIAL.
+      DATA(commit) = zcl_json_document=&gt;create_with_json( response )-&gt;get_value( &apos;commit&apos; ).
+
+      FIND REGEX &apos;transaction/([0-9]*)/commit$&apos; IN commit
+        SUBMATCHES DATA(id).
+
+      me-&gt;id = id.
+    ENDIF.
+
+  ENDMETHOD.</source>
+ </method>
+</CLAS>
