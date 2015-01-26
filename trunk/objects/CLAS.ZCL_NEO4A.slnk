@@ -451,4 +451,132 @@
 
   ENDMETHOD.</source>
  </method>
+ <method CLSNAME="ZCL_NEO4A" CMPNAME="SIMPLE_QUERY" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="12 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" MTDNEWEXC="X" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_NEO4A" CMPNAME="SIMPLE_QUERY" SCONAME="I_FROM_NODE_LABEL" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="STRING" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_NEO4A" CMPNAME="SIMPLE_QUERY" SCONAME="I_FROM_NODE_PROPERTIES" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="WDR_SIMPLE_NAME_VALUE_LIST" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_NEO4A" CMPNAME="SIMPLE_QUERY" SCONAME="I_RELATIONSHIP_LABEL" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="STRING" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_NEO4A" CMPNAME="SIMPLE_QUERY" SCONAME="I_RELATIONSHIP_PROPERTIES" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="4 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="WDR_SIMPLE_NAME_VALUE_LIST" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_NEO4A" CMPNAME="SIMPLE_QUERY" SCONAME="I_TO_NODE_LABEL" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="5 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="STRING" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_NEO4A" CMPNAME="SIMPLE_QUERY" SCONAME="I_TO_NODE_PROPERTIES" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="6 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="WDR_SIMPLE_NAME_VALUE_LIST" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_NEO4A" CMPNAME="SIMPLE_QUERY" SCONAME="I_LIMIT" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="7 " DISPID="0 " PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="I" PARVALUE="25"/>
+  <parameter CLSNAME="ZCL_NEO4A" CMPNAME="SIMPLE_QUERY" SCONAME="E_RELATIONSHIPS" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="8 " DISPID="0 " PARDECLTYP="1" PARPASSTYP="1" TYPTYPE="1" TYPE="Z_NEO4A_RELATIONSHIP_T"/>
+  <exception CLSNAME="ZCL_NEO4A" CMPNAME="SIMPLE_QUERY" SCONAME="ZCX_NEO4A" VERSION="1" LANGU="E" MTDTYPE="0" EDITORDER="1 "/>
+  <source>METHOD simple_query.
+
+    &quot;(node_from:label { property:&quot;value&quot; })-[relationship..]-&gt;(node_to..)
+
+    &quot;*--- create cypher query ---*
+    DATA(cypher) = |MATCH|.
+
+    &quot;from node
+    cypher = cypher &amp;&amp; &apos; (node_from&apos;.
+
+    IF i_from_node_label IS NOT INITIAL.
+      cypher = cypher &amp;&amp; &apos;:&apos; &amp;&amp; i_from_node_label.
+    ENDIF.
+
+    IF i_from_node_properties IS NOT INITIAL.
+
+      LOOP AT i_from_node_properties ASSIGNING FIELD-SYMBOL(&lt;property&gt;).
+
+        IF sy-tabix = 1.
+          cypher = cypher &amp;&amp; &apos; {&apos;.
+        ELSE.
+          cypher = cypher &amp;&amp; &apos;,&apos;.
+        ENDIF.
+
+        cypher = cypher &amp;&amp; |{ &lt;property&gt;-name }:&apos;{ &lt;property&gt;-value }&apos;|.
+      ENDLOOP.
+
+      cypher = cypher &amp;&amp; &apos;}&apos;.
+    ENDIF.
+
+    cypher = cypher &amp;&amp; &apos;)&apos;.
+
+    &quot;relationship
+    cypher = cypher &amp;&amp; &apos;-[relationship&apos;.
+
+    IF i_relationship_label IS NOT INITIAL.
+      cypher = cypher &amp;&amp; &apos;:&apos; &amp;&amp; i_relationship_label.
+    ENDIF.
+
+    IF i_relationship_properties IS NOT INITIAL.
+      LOOP AT i_relationship_properties ASSIGNING &lt;property&gt;.
+
+        IF sy-tabix = 1.
+          cypher = cypher &amp;&amp; &apos; {&apos;.
+        ELSE.
+          cypher = cypher &amp;&amp; &apos;,&apos;.
+        ENDIF.
+
+        cypher = cypher &amp;&amp; |{ &lt;property&gt;-name }:&apos;{ &lt;property&gt;-value }&apos;|.
+      ENDLOOP.
+
+      cypher = cypher &amp;&amp; &apos;}&apos;.
+    ENDIF.
+
+    cypher = cypher &amp;&amp; &apos;]-&gt;&apos;.
+
+    &quot;to node
+    cypher = cypher &amp;&amp; &apos;(node_to&apos;.
+
+    IF i_to_node_label IS NOT INITIAL.
+      cypher = cypher &amp;&amp; &apos;:&apos; &amp;&amp; i_to_node_label.
+    ENDIF.
+
+    IF i_to_node_properties IS NOT INITIAL.
+      LOOP AT i_to_node_properties ASSIGNING &lt;property&gt;.
+
+        IF sy-tabix = 1.
+          cypher = cypher &amp;&amp; &apos; {&apos;.
+        ELSE.
+          cypher = cypher &amp;&amp; &apos;,&apos;.
+        ENDIF.
+
+        cypher = cypher &amp;&amp; |{ &lt;property&gt;-name }:&apos;{ &lt;property&gt;-value }&apos;|.
+      ENDLOOP.
+
+      cypher = cypher &amp;&amp; &apos;}&apos;.
+    ENDIF.
+
+    cypher = cypher &amp;&amp; &apos;)&apos;.
+
+    &quot;*--- query ---*
+    cypher = cypher &amp;&amp; &apos; RETURN id(relationship)&apos; &amp;&amp; | LIMIT { i_limit }|.
+
+    &quot;*--- get relationship objects ---*
+    me-&gt;query(
+      EXPORTING
+        i_cypher  = cypher
+      IMPORTING
+        e_result  = DATA(result)
+    ).
+
+    &quot;data&quot;:[{&quot;row&quot;:[45]},{&quot;row&quot;:[46]},{&quot;row&quot;:[47]},{&quot;row&quot;:[48]}....
+
+    DATA(data_json) = zcl_json_document=&gt;create_with_json( result )-&gt;get_value( &apos;data&apos; ).
+    DATA(data_json_doc) = zcl_json_document=&gt;create_with_json( data_json ).
+
+    WHILE data_json_doc-&gt;get_next( ) IS NOT INITIAL.
+
+      DATA(row_json) = data_json_doc-&gt;get_value( &apos;row&apos; ).
+
+      &quot;we only have one relationship id per row, no need to parse JSON
+      FIND REGEX &apos;\[([0-9]*)\]&apos; IN row_json SUBMATCHES DATA(id).
+
+      IF id IS NOT INITIAL.
+        DATA(relationship) = me-&gt;get_relationship( CONV i( id ) ).
+
+        IF relationship IS NOT INITIAL.
+          INSERT relationship INTO TABLE e_relationships.
+          CLEAR relationship.
+        ENDIF.
+
+        CLEAR id.
+      ENDIF.
+
+    ENDWHILE.
+
+  ENDMETHOD.</source>
+ </method>
 </CLAS>
