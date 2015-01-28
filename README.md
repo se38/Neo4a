@@ -16,7 +16,7 @@ Enter or uncomment the following line:
 ```
 org.neo4j.server.webserver.address=0.0.0.0
 ```
-You can enter the IP address of you SAP server or leave 0.0.0.0, which means that Neo4j is accessible from every other IP address (not recommended in production!)
+You can enter the IP address of your SAP server or leave 0.0.0.0, which means that Neo4j is accessible from every other IP address (not recommended in production!)
 
 ## Installation Neo4a
 import Nugget with [SAPlink](http://www.saplink.org)
