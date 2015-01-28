@@ -13,9 +13,9 @@ See [Blog post on SAP Community Network](http://scn.sap.com/community/developer-
 ## Neo4j Server configuration
 If you have installed Neo4j on a separate host (other than the SAP system): to access the database from outside (browser + SAP), you have to change one line of the server configuration file ./conf/neo4j-server.properties:
 Enter or uncomment the following line:
-'''
+```
 org.neo4j.server.webserver.address=0.0.0.0
-'''
+```
 You can enter the IP address of you SAP server or leave 0.0.0.0, which means that Neo4j is accessible from every other IP address (not recommended in production!)
 
 ## Installation Neo4a
