@@ -463,6 +463,10 @@
   <exception CLSNAME="ZCL_NEO4A_NODE" CMPNAME="GET_PROPERTIES" SCONAME="ZCX_NEO4A" VERSION="1" LANGU="E" MTDTYPE="0" EDITORDER="1 "/>
   <source>METHOD get_properties.
 
+    CLEAR e_properties.         &quot;if nothing found -&gt; exporting parameter must be initialized
+    CLEAR e_properties_json.    &quot;if nothing found -&gt; exporting parameter must be initialized
+    CLEAR e_properties.         &quot;if nothing found -&gt; exporting parameter must be initialized
+
     &quot;http://neo4j.com/docs/stable/rest-api-node-properties.html#rest-api-get-properties-for-node
 
     IF i_read_db IS NOT INITIAL.
@@ -664,6 +668,8 @@
   <exception CLSNAME="ZCL_NEO4A_NODE" CMPNAME="GET_RELATIONSHIPS_ALL" SCONAME="ZCX_NEO4A" VERSION="1" LANGU="E" MTDTYPE="0" EDITORDER="1 "/>
   <source>METHOD get_relationships_all.
 
+    CLEAR e_relationships.    &quot;if nothing found -&gt; exporting parameter must be initialized
+
     &quot;http://neo4j.com/docs/stable/rest-api-relationships.html#rest-api-get-all-relationships
 
     me-&gt;get_relationships(
@@ -682,6 +688,8 @@
   <exception CLSNAME="ZCL_NEO4A_NODE" CMPNAME="GET_RELATIONSHIPS_IN" SCONAME="ZCX_NEO4A" VERSION="1" LANGU="E" MTDTYPE="0" EDITORDER="1 "/>
   <source>METHOD get_relationships_in.
 
+    CLEAR e_relationships.    &quot;if nothing found -&gt; exporting parameter must be initialized
+
     &quot;http://neo4j.com/docs/stable/rest-api-relationships.html#rest-api-get-incoming-relationships
 
     me-&gt;get_relationships(
@@ -699,6 +707,8 @@
   <parameter CLSNAME="ZCL_NEO4A_NODE" CMPNAME="GET_RELATIONSHIPS_OUT" SCONAME="E_RELATIONSHIPS" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " PARDECLTYP="1" PARPASSTYP="1" TYPTYPE="1" TYPE="Z_NEO4A_RELATIONSHIP_T"/>
   <exception CLSNAME="ZCL_NEO4A_NODE" CMPNAME="GET_RELATIONSHIPS_OUT" SCONAME="ZCX_NEO4A" VERSION="1" LANGU="E" MTDTYPE="0" EDITORDER="1 "/>
   <source>METHOD get_relationships_out.
+
+    CLEAR e_relationships.    &quot;if nothing found -&gt; exporting parameter must be initialized
 
     &quot;http://neo4j.com/docs/stable/rest-api-relationships.html#rest-api-get-outgoing-relationships
 

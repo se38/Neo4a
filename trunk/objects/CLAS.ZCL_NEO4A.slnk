@@ -147,6 +147,8 @@
   <exception CLSNAME="ZCL_NEO4A" CMPNAME="GET_LABELS" SCONAME="ZCX_NEO4A" VERSION="1" LANGU="E" MTDTYPE="0" EDITORDER="1 "/>
   <source>METHOD get_labels.
 
+    CLEAR e_labels.    &quot;if nothing found -&gt; exporting parameter must be initialized
+
     &quot;http://neo4j.com/docs/stable/rest-api-node-labels.html#rest-api-list-all-labels
 
     me-&gt;get(
@@ -195,6 +197,8 @@
   <exception CLSNAME="ZCL_NEO4A" CMPNAME="GET_NODES_WITH_LABEL" SCONAME="ZCX_NEO4A" VERSION="1" LANGU="E" MTDTYPE="0" EDITORDER="1 "/>
   <source>METHOD get_nodes_with_label.
 
+    CLEAR e_nodes.    &quot;if nothing found -&gt; exporting parameter must be initialized
+
     &quot;http://neo4j.com/docs/stable/rest-api-node-labels.html#rest-api-get-all-nodes-with-a-label
     &quot;http://neo4j.com/docs/stable/rest-api-node-labels.html#rest-api-get-nodes-by-label-and-property
 
@@ -218,7 +222,6 @@
       ENDLOOP.
 
     ENDIF.
-
 
     me-&gt;get(
       EXPORTING
@@ -341,6 +344,8 @@
   <exception CLSNAME="ZCL_NEO4A" CMPNAME="QUERY" SCONAME="ZCX_NEO4A" VERSION="1" LANGU="E" MTDTYPE="0" EDITORDER="1 "/>
   <source>METHOD query.
 
+    CLEAR e_result.    &quot;if nothing found -&gt; exporting parameter must be initialized
+
     &quot;http://neo4j.com/docs/stable/rest-api-transactional.html#rest-api-begin-and-commit-a-transaction-in-one-request
     &quot;only get the first result (else use &apos;transaction&apos;)
 
@@ -449,6 +454,10 @@
       IMPORTING code   = e_code
                 reason = e_reason ).
 
+    &quot;*--- error &quot;No memory for processing HTTP, HTTPS or SMTP query&quot; ---*
+    &quot;*--- http connection must be closed                             ---*
+    client-&gt;close( ).
+
   ENDMETHOD.</source>
  </method>
  <method CLSNAME="ZCL_NEO4A" CMPNAME="SIMPLE_QUERY" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="12 " DISPID="0 " MTDTYPE="0" MTDDECLTYP="0" MTDNEWEXC="X" BCMTDCAT="00" BCMTDSYN="0">
@@ -462,6 +471,8 @@
   <parameter CLSNAME="ZCL_NEO4A" CMPNAME="SIMPLE_QUERY" SCONAME="E_RELATIONSHIPS" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="8 " DISPID="0 " PARDECLTYP="1" PARPASSTYP="1" TYPTYPE="1" TYPE="Z_NEO4A_RELATIONSHIP_T"/>
   <exception CLSNAME="ZCL_NEO4A" CMPNAME="SIMPLE_QUERY" SCONAME="ZCX_NEO4A" VERSION="1" LANGU="E" MTDTYPE="0" EDITORDER="1 "/>
   <source>METHOD simple_query.
+
+    CLEAR e_relationships.    &quot;if nothing found -&gt; exporting parameter must be initialized
 
     &quot;(node_from:label { property:&quot;value&quot; })-[relationship..]-&gt;(node_to..)
 
